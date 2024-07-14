@@ -1,0 +1,37 @@
+- To check the docker images available:
+    docker images
+- Check containers
+    docker ps
+- Pull images from Docker Hub
+    docker pull <image name>:<tag> #if without <tag>, will pull the latest version by default
+    example: docker pull nginx:1.23
+- Run the image (creates new container everytime, does not reuse the previous)
+    docker run <image name>:<tag>
+- Run the image by assigning a new name to the container
+    docker run --name <new container name> <image name>:<tags>
+- Restart a container that has been created, without having to create a new one
+    docker start <container id> #can use logs to see the previous container id
+- Show running containers (only show 1 if running multiple on the same container)
+    docker ps
+- Show all running containers
+    docker ps -a
+- Stop running containers
+    Ctrl + C
+- Stop running containers in the background
+    docker stop <image name>:<tag>
+- Run container in background (without blocking the terminal) and prints the container ID
+    docker run -d <image name>:<tag>
+    OR
+    docker run --detach <image name>:<tag>
+- View the logs of the container
+    docker logs <container id> #use docker ps to see the container id
+    docker logs <container name>
+- Port binding
+    docker run -d -p <local host>:<container host> <image name>:<tag>
+    OR
+    docker run -d --publish <local host>:<container host> <image name>:<tag>
+    example: docker run -d -p 9000:80 nginx:1.23
+- Build docker image
+    docker build -t <image name>:<tag> <location of dockerfile> #put "." for <location of dockerfile> to refer to the current folder
+    OR
+    docker build -tag <image name>:<tag> <location of dockerfile>
